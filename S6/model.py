@@ -38,13 +38,5 @@ class Net(nn.Module):
         x = x.view(-1, 10)
         return F.log_softmax(x)
 
-    def forward_v1(self, x):
-        x = self.pool1(F.relu(self.conv2(F.relu(self.conv1(x)))))
-        x = self.pool2(F.relu(self.conv4(F.relu(self.conv3(x)))))
-        x = F.relu(self.conv6(F.relu(self.conv5(x))))
-        x = F.relu(self.conv7(x))
-        x = x.view(-1, 10)
-        return F.log_softmax(x)
-
 def model_summary(model,input_size):
     return summary(model, input_size)
