@@ -3,10 +3,12 @@ The school of AI ERA V1 Course related assignments and Quiz of Session 6.
 
 ## Table of contents
 - Prerequisites
-- Modules
-- Usage
-- Troubleshooting
-- Authors
+- Part 1
+- Part 2
+  - Modules
+  - Usage
+  - Troubleshooting
+  - Authors
 
 ## Prerequisites
 This module requires the following dependencies to be installed prior.
@@ -15,6 +17,12 @@ This module requires the following dependencies to be installed prior.
 - torchsummary
 - matplotlib
 
+## Part 1
+
+<img width="931" alt="image" src="https://github.com/prabhukirangit/ERAV1/assets/33514187/8001277a-cc4f-43e8-88a2-fe2d5b868db3">
+
+
+## Part 2
 ## Modules
 - ERAV1-S6.ipynb : Main notebook file to load the data, train and test the model.
 - model.py : Python class file for Model creation, training.
