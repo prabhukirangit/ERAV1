@@ -22,6 +22,8 @@ This module requires the following dependencies to be installed prior.
 <img width="931" alt="image" src="https://github.com/prabhukirangit/ERAV1/assets/33514187/8001277a-cc4f-43e8-88a2-fe2d5b868db3">
 
 
+<img width="825" alt="image" src="https://github.com/prabhukirangit/ERAV1/assets/33514187/3ca83eed-d80d-4da2-b6d1-26036eae91b4">
+
 ## Part 2
 ## Modules
 - ERAV1-S6.ipynb : Main notebook file to load the data, train and test the model.
