@@ -34,12 +34,12 @@ This module requires the following dependencies to be installed prior.
 - utils.py : Python class file for model training and evaluation.
 
 ## Analysis 
-### Experiment Reults : 
+### Experiment Results : 
 Parameters: 194,176 \
-Best Train Accuracy: 77.92 \
-Best Test Accuracy: 85.07 \
+Best Train Accuracy: 80.43 \
+Best Test Accuracy: 87.20 \
 Metrics: \
-
+![image](https://github.com/prabhukirangit/ERAV1/assets/33514187/b125f8f8-ec04-4141-a7b9-2ef892e0c27a)
 
 
 ## Troubleshooting
