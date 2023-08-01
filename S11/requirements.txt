@@ -1,2 +1,5 @@
 torchsummary
 albumentations
+torch-lr-finder
+pytorch-lightning
+gradio
