@@ -4,10 +4,8 @@ import numpy as np
 from torchsummary import summary
 from torch_lr_finder import LRFinder
 import torch.optim as optim
-from __future__ import print_function
 
 import matplotlib.pyplot as plt
-%matplotlib inline
 
 import warnings
 warnings.filterwarnings( "ignore", module = "matplotlib\..*" )
