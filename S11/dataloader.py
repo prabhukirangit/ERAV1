@@ -1,3 +1,4 @@
+import torch
 from torchvision import datasets,transforms
 from albumentations import Compose, HorizontalFlip, Normalize, Resize,Blur
 import albumentations as album
@@ -7,7 +8,7 @@ import numpy as np
 
 class CustomCIFAR10Dataset(datasets.CIFAR10):
   def __init__(self, root="./data", train=True, download=True, transform=None):
-    self.data=super().__init__(root=root, train=train, download=download, transform=transform)
+    super().__init__(root=root, train=train, download=download, transform=transform)
     self.mean, self.std = ( 0.4914, 0.4822, 0.4465), (0.247, 0.243, 0.261)
 
   def apply_transformations(self,train=True):
@@ -27,4 +28,4 @@ class CustomCIFAR10Dataset(datasets.CIFAR10):
       # Test Phase transformations
       list_transforms = Compose([Normalize(self.mean,self.std),ToTensorV2()])
 
-    self.data.transform = transforms.Compose([transforms.Lambda(lambda x: list_transforms(image=np.array(x))['image'])])
+    return transforms.Compose([transforms.Lambda(lambda x: list_transforms(image=np.array(x))['image'])])
