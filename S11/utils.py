@@ -112,7 +112,7 @@ def plot_train_history(train_history):
   axs[1, 1].plot(test_acc)
   axs[1, 1].set_title("Test Accuracy")
 
-def plot_misclassifications(model,test_loader,classes,num_of_images=10,batch_size=1000):
+def plot_misclassifications(model,device,test_loader,classes,num_of_images=10,batch_size=1000):
   model.eval()
   correct = 0
   IncorrectIndex=list()
