@@ -14,7 +14,7 @@ warnings.filterwarnings("ignore")
 
 cifar_mean, cifar_std = ( 0.4914, 0.4822, 0.4465), (0.247, 0.243, 0.261)
 
-def findmaxLRWithOneCycle(ModelClass,device,train_loader):
+def findmaxLRWithOneCycle(model,device,train_loader,start_lr=1e-3,end_lr=10):
   '''
   The 1cycle policy anneals the learning rate from an initial learning rate to some maximum 
   learning rate and then from that maximum learning rate to some minimum learning rate 
@@ -23,11 +23,11 @@ def findmaxLRWithOneCycle(ModelClass,device,train_loader):
   :param device: cuda or cpu
   :param train_loader: Trianing data
   '''
-  model = ModelClass().to(device)
-  optimizer = optim.Adam(model.parameters(), lr=0.03, weight_decay=1e-4)
+  #model = ModelClass().to(device)
+  optimizer = optim.Adam(model.parameters(), lr=start_lr, weight_decay=1e-4)
   criterion = torch.nn.CrossEntropyLoss()
   lr_finder = LRFinder(model, optimizer, criterion, device="cuda")
-  lr_finder.range_test(train_loader, end_lr=10, num_iter=200, step_mode="exp")
+  lr_finder.range_test(train_loader, end_lr=end_lr, num_iter=200, step_mode="exp")
   lr_finder.plot() # to inspect the loss-learning rate graph
   lr_finder.reset() # to reset the model and optimizer to their initial state
   return lr_finder
