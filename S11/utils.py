@@ -112,5 +112,38 @@ def plot_train_history(train_history):
   axs[1, 1].plot(test_acc)
   axs[1, 1].set_title("Test Accuracy")
 
+def plot_misclassifications(model,test_loader,classes,num_of_images=10,batch_size=1000):
+  model.eval()
+  correct = 0
+  IncorrectIndex=list()
+  PredClass=list()
+  TargetClass=list()
+  with torch.no_grad():
+      i=0
+      for data, target in test_loader:
+          data, target = data.to(device), target.to(device)
+          output = model(data)
+          pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
+          incorrect=torch.where(target.eq(pred.view_as(target))==0)[0].cpu().numpy()
+          correct=torch.where(target.eq(pred.view_as(target))==1)[0].cpu().numpy()
+          IncorrectIndex=IncorrectIndex + list(incorrect+i)
+          if len(incorrect):
+              PredClass=PredClass+pred[incorrect].squeeze().tolist()
+              TargetClass=TargetClass+target[incorrect].squeeze().tolist()
+          break
+
+  figure = plt.figure(figsize=(5, 5))
+  for i,index in enumerate(IncorrectIndex):
+      plt.subplot(2,5, i+1)
+      plt.axis('off')
+      inv_norm=inv_normalize()
+      image= inv_norm(data[index].cpu())
+      plt.imshow(np.transpose(image,(1,2,0)))
+      plt.title(classes[TargetClass[i]]+"/"+classes[PredClass[i]],size='xx-small')
+      if i==(num_of_images-1):
+          break
+  figure.tight_layout()
+  figure.subplots_adjust(top=0.60)
+
 
 
