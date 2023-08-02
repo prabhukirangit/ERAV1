@@ -1,10 +1,20 @@
 import torch
 from torchvision import transforms
-import matplotlib.pyplot as plt
 import numpy as np
 from torchsummary import summary
 from torch_lr_finder import LRFinder
 import torch.optim as optim
+from __future__ import print_function
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+import warnings
+warnings.filterwarnings( "ignore", module = "matplotlib\..*" )
+warnings.filterwarnings("ignore")
+
+
+cifar_mean, cifar_std = ( 0.4914, 0.4822, 0.4465), (0.247, 0.243, 0.261)
 
 def findmaxLRWithOneCycle(ModelClass,device,train_loader):
   '''
@@ -24,7 +34,7 @@ def findmaxLRWithOneCycle(ModelClass,device,train_loader):
   lr_finder.reset() # to reset the model and optimizer to their initial state
   return lr_finder
 
-cifar_mean, cifar_std = ( 0.4914, 0.4822, 0.4465), (0.247, 0.243, 0.261)
+
 
 def inv_normalize(dataset="cifar"):
   """
@@ -75,6 +85,8 @@ def visualize_images(images,labels,classes,num_of_images=20,inverse_normalize=Fa
       plt.axis('off')
       if inverse_normalize:
         image= inv_normalize(images[index])
+      else:
+        image=images[index]
       plt.imshow(np.transpose(image,(1,2,0)))
       plt.title(classes[labels[index]],size='xx-small')
 
